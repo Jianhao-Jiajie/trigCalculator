@@ -69,8 +69,8 @@ def tangent(num):
         if cosine(num) < 0.0000001 and cosine(num)> -0.0000001:
             return("has asymptote")
         else:    
-            return(sine(num)/cosine(num))
+            return(round((sine(num)/cosine(num))*(10**10))/(10**10))
     except:
         print("error with tangent")
 
-print(f"tangent of {radian} = {tangent(radian):.10f}")
+print(f"tangent of {radian} = {tangent(radian)}")
