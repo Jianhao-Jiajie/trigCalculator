@@ -1,4 +1,4 @@
-#input: str, float, int
+#input: number or number in string
 def round(num):
     try:
         extra = float(num) - int(num)
@@ -9,11 +9,12 @@ def round(num):
         else:
             return int(num) + 1
     except:
-        print('Enter a valid number')
+        print('enter a valid number for round')
 
 #print(round(float(input('type a number: '))))
 
-#rounds down floats
+#rounds down float parameters
+#input: int or int in string
 def factorial(num):
     try:
         num = int(float(num))
@@ -27,6 +28,30 @@ def factorial(num):
             n += 1
         return final
     except:
-        print('enter a number')
+        print('enter a valid number for factorial')
 
-print(factorial(input('type a number: ')))
+#print(factorial(input('type a number: ')))
+
+def sine(num):
+    try:
+        num %= (2*3.141592653589793238462643383279502)
+ #    degree parameter (work on this later)
+ #       if degree == True:
+ #           num = num/180*3.1415926535897932384626
+        temp = 0
+        for x in range(20):
+            temp += (-1)**x /factorial(2*x+1) * num**(2*x+1)
+        return(temp)
+    except:
+        print("error with sine")
+
+#ifDegree = input('calculate in degree?(True/False): ')
+radian = float(input('enter the angle: '))
+print(f"sine of {radian} = {sine(radian):.10f}")
+
+def cosine(num):
+    try:
+        num %= (2*3.141592653589793238462643383279502)
+#杰哥做事！！
+    except:
+        print("error with cosine")
