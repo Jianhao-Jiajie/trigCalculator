@@ -54,7 +54,6 @@ print(f"sine of {radian} = {sine(radian):.10f}")
 def cosine(num):
     try:
         num %= (2*pi)
-#杰哥做事！！
         temp = 0
         for x in range(20):
             temp += (-1)**x /factorial(2*x) * num**(2*x)
@@ -66,9 +65,9 @@ print(f"cosine of {radian} = {cosine(radian):.10f}")
 
 def tangent(num):
     try:
-        if cosine(num) < 0.0000001 and cosine(num)> -0.0000001:
+        if abs(cosine(num)) < 0.0000001:
             return("has asymptote")
-        elif sine(num) < 0.0000001 and sine(num)> -0.0000001:
+        elif abs(sine(num) < 0.0000001):
             return(0)
         else:    
             return(round((sine(num)/cosine(num))*(10**10))/(10**10))
@@ -76,3 +75,19 @@ def tangent(num):
         print("error with tangent")
 
 print(f"tangent of {radian} = {tangent(radian)}")
+inverseNumber = input('type a number to arctan: ')
+
+def arctan(num):
+    temp = 0
+    if abs(num) < 1:
+        for x in range(1, 100):
+            temp += (-1)**(x-1) * num**(2*x-1)/(2*x-1)
+    else:
+        for x in range (100):
+            temp += 1
+        if(num<0):
+            temp -= (pi/2)
+        else:
+            temp += (pi/2)
+    return(temp)
+print(arctan(inverseNumber))
