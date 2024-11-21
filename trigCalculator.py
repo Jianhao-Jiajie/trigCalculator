@@ -53,5 +53,10 @@ def cosine(num):
     try:
         num %= (2*3.141592653589793238462643383279502)
 #杰哥做事！！
+        temp = 0
+        for x in range(20):
+            temp += (-1)**x /factorial(2*x) * num**(2*x)
+        return(temp)
     except:
         print("error with cosine")
+  
