@@ -1,4 +1,5 @@
-#input: number or number in string
+#input: number or number in string\
+pi = 3.141592653589793238462643383279502
 def round(num):
     try:
         extra = float(num) - int(num)
@@ -34,10 +35,10 @@ def factorial(num):
 
 def sine(num):
     try:
-        num %= (2*3.141592653589793238462643383279502)
+        num %= (2*pi)
  #    degree parameter (work on this later)
  #       if degree == True:
- #           num = num/180*3.1415926535897932384626
+ #           num = num/180*pi
         temp = 0
         for x in range(20):
             temp += (-1)**x /factorial(2*x+1) * num**(2*x+1)
@@ -49,9 +50,10 @@ def sine(num):
 radian = float(input('enter the angle: '))
 print(f"sine of {radian} = {sine(radian):.10f}")
 
+
 def cosine(num):
     try:
-        num %= (2*3.141592653589793238462643383279502)
+        num %= (2*pi)
 #杰哥做事！！
         temp = 0
         for x in range(20):
@@ -59,11 +61,16 @@ def cosine(num):
         return(temp)
     except:
         print("error with cosine")
-
+  
 print(f"cosine of {radian} = {cosine(radian):.10f}")
 
 def tangent(num):
-    return(sine(num)/cosine(num))
+    try:
+        if cosine(num) < 0.0000001 and cosine(num)> -0.0000001:
+            return("has asymptote")
+        else:    
+            return(sine(num)/cosine(num))
+    except:
+        print("error with tangent")
 
 print(f"tangent of {radian} = {tangent(radian):.10f}")
-  
