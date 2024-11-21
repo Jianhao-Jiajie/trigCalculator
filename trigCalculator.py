@@ -68,6 +68,8 @@ def tangent(num):
     try:
         if cosine(num) < 0.0000001 and cosine(num)> -0.0000001:
             return("has asymptote")
+        elif sine(num) < 0.0000001 and sine(num)> -0.0000001:
+            return(0)
         else:    
             return(round((sine(num)/cosine(num))*(10**10))/(10**10))
     except:
