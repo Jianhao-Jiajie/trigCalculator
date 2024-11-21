@@ -59,4 +59,11 @@ def cosine(num):
         return(temp)
     except:
         print("error with cosine")
+
+print(f"cosine of {radian} = {cosine(radian):.10f}")
+
+def tangent(num):
+    return(sine(num)/cosine(num))
+
+print(f"tangent of {radian} = {tangent(radian):.10f}")
   
