@@ -75,7 +75,27 @@ def tangent(num):
         print("error with tangent")
 
 print(f"tangent of {radian} = {tangent(radian)}")
-inverseNumber = input('type a number to arctan: ')
+
+inverseNumber = input('type a number: ')
+
+def arcsin(num):
+    temp = 0
+    if abs(num) < 1:
+        for x in range(20):
+            temp += factorial(2*x)/((4**x)*((factorial(x))**2)*(2*x + 1)) * num**(2*x + 1)
+        return(temp)
+    else:
+        return(f'({num} not in domain)')
+
+print(f"arcsin of {inverseNumber} = {arcsin(inverseNumber)}")
+        
+def arccos(num):
+    if abs(num) < 1:
+        return(pi/2 - arcsin(num))
+    else:
+        return(f'({num} not in domain)')
+    
+print(f"arccos of {inverseNumber} = {arccos(inverseNumber)}")
 
 def arctan(num):
     temp = 0
