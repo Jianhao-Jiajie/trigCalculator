@@ -80,14 +80,15 @@ inverseNumber = input('type a number to arctan: ')
 def arctan(num):
     temp = 0
     if abs(num) < 1:
-        for x in range(1, 100):
+        for x in range(1, 20):
             temp += (-1)**(x-1) * num**(2*x-1)/(2*x-1)
+        return(temp)
     else:
-        for x in range (100):
-            temp += 1
+        for x in range (20):
+            temp += (-1)**(x+1) / (num**(2*x+1)*(2*x+1))
         if(num<0):
-            temp -= (pi/2)
+            return(temp - pi/2)
         else:
-            temp += (pi/2)
-    return(temp)
-print(arctan(inverseNumber))
+            return(temp + pi/2)
+
+print(f"arctan of {inverseNumber} = {arctan(inverseNumber)}")
