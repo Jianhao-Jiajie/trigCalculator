@@ -1,20 +1,7 @@
 #input: number or number in string\
 pi = 3.141592653589793238462643383279502
-def round(num):
-    try:
-        extra = float(num) - int(num)
-        if (extra < 0.5 and extra > 0) or (extra > -0.5 and extra < 0):
-            return int(num)
-        elif int(num) < 0:
-            return int(num) - 1
-        else:
-            return int(num) + 1
-    except:
-        print('enter a valid number for round')
 
-#print(round(float(input('type a number: '))))
-
-#rounds down float parameters
+#rounds down float arguments
 #input: int or int in string
 def factorial(num):
     try:
@@ -42,7 +29,7 @@ def sine(num):
         temp = 0
         for x in range(20):
             temp += (-1)**x /factorial(2*x+1) * num**(2*x+1)
-        return(temp)
+        return temp
     except:
         print("error with sine")
 
@@ -57,7 +44,7 @@ def cosine(num):
         temp = 0
         for x in range(20):
             temp += (-1)**x /factorial(2*x) * num**(2*x)
-        return(temp)
+        return temp
     except:
         print("error with cosine")
   
@@ -65,50 +52,61 @@ print(f"cosine of {radian} = {cosine(radian):.10f}")
 
 def tangent(num):
     try:
-        if abs(cosine(num)) < 0.0000001:
-            return("has asymptote")
-        elif abs(sine(num)) < 0.0000001:
+        if abs(cosine(num)) < 0.0000000001:
+            return(f"asymptote at this point")
+        elif abs(sine(num)) < 0.0000000001:
             return(0)
         else:    
-            return(round((sine(num)/cosine(num))*(10**10))/(10**10))
+            return round(sine(num)/cosine(num),10)
     except:
         print("error with tangent")
 
 print(f"tangent of {radian} = {tangent(radian)}")
 
-inverseNumber = input('type a number: ')
+inverseNumber = float(input('type a number: '))
 
 def arcsin(num):
-    temp = 0
-    if abs(num) < 1:
-        for x in range(20):
-            temp += factorial(2*x)/((4**x)*((factorial(x))**2)*(2*x + 1)) * num**(2*x + 1)
-        return(temp)
-    else:
-        return(f'({num} not in domain)')
+        temp = 0
+#if abs(num) >= 0.8
+#new function model
+        if abs(num) <= 1:
+            for x in range(20):
+                temp += factorial(2*x)/((4**x)*((factorial(x))**2)*(2*x + 1)) * num**(2*x + 1)
+            return temp
+        else:
+            return(f'{num} is not in domain of arcsin')
 
 print(f"arcsin of {inverseNumber} = {arcsin(inverseNumber)}")
         
 def arccos(num):
-    if abs(num) < 1:
-        return(pi/2 - arcsin(num))
-    else:
-        return(f'({num} not in domain)')
+    try:
+        if abs(num) <= 1:
+            return pi/2 - arcsin(num)
+        else:
+            return(f'{num} is not in domain of arccos')
+    except: 
+        print('error with arccos')
     
 print(f"arccos of {inverseNumber} = {arccos(inverseNumber)}")
 
 def arctan(num):
-    temp = 0
-    if abs(num) < 1:
-        for x in range(1, 20):
-            temp += (-1)**(x-1) * num**(2*x-1)/(2*x-1)
-        return(temp)
-    else:
-        for x in range (20):
-            temp += (-1)**(x+1) / (num**(2*x+1)*(2*x+1))
-        if(num<0):
-            return(temp - pi/2)
+    try:
+        temp = 0
+ #       if abs(num) < 1.000:
+
+        if abs(num) < 1:
+            for x in range(1, 20):
+                temp += (-1)**(x-1) * num**(2*x-1)/(2*x-1)
+            return(temp)
         else:
-            return(temp + pi/2)
+            for x in range (20):
+                temp += (-1)**(x+1) / (num**(2*x+1)*(2*x+1))
+            if(num<0):
+                return(temp - pi/2)
+            else:
+                return(temp + pi/2)
+    except:
+        print('error with arctan')
 
 print(f"arctan of {inverseNumber} = {arctan(inverseNumber)}")
+#input: number or number in string
