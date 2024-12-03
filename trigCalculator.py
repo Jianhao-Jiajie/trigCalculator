@@ -1,4 +1,3 @@
-#input: number or number in string\
 pi = 3.141592653589793238462643383279502
 
 #rounds down float arguments
@@ -27,28 +26,31 @@ def sine(num):
  #       if degree == True:
  #           num = num/180*pi
         temp = 0
-        for x in range(20):
+        for x in range(10):
             temp += (-1)**x /factorial(2*x+1) * num**(2*x+1)
         return temp
     except:
         print("error with sine")
 
+#abandoned idea 
 #ifDegree = input('calculate in degree?(True/False): ')
-radian = float(input('enter the angle: '))
-print(f"sine of {radian} = {sine(radian):.10f}")
+
+#testing
+#radian = float(input('enter the angle: '))
+#print(f"sine of {radian} = {sine(radian):.10f}")
 
 
 def cosine(num):
     try:
         num %= (2*pi)
         temp = 0
-        for x in range(20):
+        for x in range(10):
             temp += (-1)**x /factorial(2*x) * num**(2*x)
         return temp
     except:
         print("error with cosine")
   
-print(f"cosine of {radian} = {cosine(radian):.10f}")
+#print(f"cosine of {radian} = {cosine(radian):.10f}")
 
 def tangent(num):
     try:
@@ -61,7 +63,7 @@ def tangent(num):
     except:
         print("error with tangent")
 
-print(f"tangent of {radian} = {tangent(radian)}")
+#print(f"tangent of {radian} = {tangent(radian)}")
 
 inverseNumber = float(input('type a number: '))
 
@@ -92,11 +94,12 @@ print(f"arccos of {inverseNumber} = {arccos(inverseNumber)}")
 def arctan(num):
     try:
         temp = 0
- #       if abs(num) < 1.000:
-
-        if abs(num) < 1:
-            for x in range(1, 20):
-                temp += (-1)**(x-1) * num**(2*x-1)/(2*x-1)
+        #approximation when close to 1
+        if abs(num) > 0.940 and abs(num) < 1.06:
+            return(0.5*num + 0.2854)
+        elif abs(num) < 1:
+            for x in range(20):
+                temp += (-1)**(x) * num**(2*x+1)/(2*x+1)
             return(temp)
         else:
             for x in range (20):
@@ -107,6 +110,6 @@ def arctan(num):
                 return(temp + pi/2)
     except:
         print('error with arctan')
-
-print(f"arctan of {inverseNumber} = {arctan(inverseNumber)}")
+        
 #input: number or number in string
+print(f"arctan of {inverseNumber} = {arctan(inverseNumber)}")
